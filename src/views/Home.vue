@@ -119,7 +119,7 @@ export default {
 .stat-num { display: block; font-size: 40px; color: #00ff88; font-weight: bold; }
 .stat-label { font-size: 16px; color: #888; margin-top: 4px; }
 
-.modules-section { max-width: 1100px; margin: 0 auto; padding: 80px 20px 100px; position: relative; z-index: 2; }
+.modules-section { max-width: 1100px; margin: 0 auto; margin-top: 750px; padding: 80px 20px 100px; position: relative; z-index: 2; }
 .section-title { font-size: 36px; color: #fff; text-align: center; margin-bottom: 50px; display: inline-flex; align-items: center; gap: 12px; left: 50%; transform: translateX(-50%); position: relative; }
 .title-decor { width: 30px; height: 2px; background: linear-gradient(90deg, transparent, #00ff88); }
 

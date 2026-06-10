@@ -9,7 +9,7 @@ html, body {
   min-height: 100vh;
   font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
   color: #e0e0e0;
-  background: #ffffff;
+  background: transparent;
   overflow-x: hidden;
 }
 
@@ -18,7 +18,7 @@ html, body {
 #app {
   min-height: 100vh;
   position: relative;
-  background: #ffffff;
+  background: transparent;
 }
  
 
