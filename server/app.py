@@ -318,8 +318,8 @@ def agent_chat():
         return jsonify({'success': False, 'reply': f'AI服务暂时不可用: {str(e)[:100]}'})
 
 
+init_db()
 if __name__ == '__main__':
-    init_db()
     import sys
     port = int(os.environ.get('PORT', 5000))
     # Render.com 设置 RENDER=true，自动用 waitress
