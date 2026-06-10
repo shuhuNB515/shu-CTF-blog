@@ -10,7 +10,7 @@ from datetime import datetime
 from urllib.parse import unquote
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/api/*": {"origins": "*", "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"], "allow_headers": ["Content-Type", "Authorization"]}})
 application = app  # PythonAnywhere WSGI 入口
 
 DB_PATH = os.path.join(os.path.dirname(__file__), 'data.db')
@@ -26,6 +26,14 @@ def get_db():
     return conn
 
 
+@app.after_request
+def add_cors_headers(response):
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    response.headers['Access-Control-Allow-Headers'] = 'Content-Type,Authorization'
+    response.headers['Access-Control-Allow-Methods'] = 'GET,POST,PUT,DELETE,OPTIONS'
+    return response
+
+
 def decode_body(raw_body):
     """解码前端混淆后的请求体（Base64 → URLDecode → JSON）"""
     try:
@@ -33,6 +41,12 @@ def decode_body(raw_body):
         return json.loads(unquote(decoded))
     except Exception:
         return {}
+
+
+# ========== 健康检查 / 首页 ==========
+@app.route('/')
+def index():
+    return jsonify({'status': 'ok', 'message': 'shuCTF Backend Running'})
 
 
 def init_db():

@@ -1,15 +1,9 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 
-// base: GitHub Pages 部署路径
-// - 如果仓库是 用户名.github.io → base: '/'
-// - 如果仓库是 其他名称 → base: '/仓库名/'
-// 构建时: npx vite build --base=/shuCTF-Blog/
-const base = process.env.VITE_BASE || '/'
-
 export default defineConfig({
   plugins: [vue()],
-  base,
+  base: '/shu-CTF-blog/',
   build: {
     sourcemap: false,
     cssMinify: 'esbuild',

@@ -3,6 +3,7 @@ dist/
 *.pyc
 __pycache__/
 .env
+.env.production
 server/data.db-journal
 ISCC/
 shuhuNB560.docx

@@ -1,7 +1,5 @@
-// 后端API地址
-// 开发环境: VITE_API_BASE 不设置，默认 http://localhost:5000
-// 生产环境: 构建时设置 VITE_API_BASE=https://你的后端地址.onrender.com
-export const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:5000'
+// 后端API地址 — 部署到 PythonAnywhere 后在此修改
+export const API_BASE = 'https://shuhunb515.pythonanywhere.com'
 
 // 请求体混淆：Base64(URLEncode(JSON))
 function obfuscateBody(data) {
