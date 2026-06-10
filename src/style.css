@@ -1,0 +1,38 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100vh;
+  font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+  color: #e0e0e0;
+  background: #ffffff;
+  overflow-x: hidden;
+}
+
+
+/* 全局背景 */
+#app {
+  min-height: 100vh;
+  position: relative;
+  background: #ffffff url('/doro背景.png') repeat-y center top;
+}
+ 
+
+/* 自定义滚动条 */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #1a1a2e;
+}
+::-webkit-scrollbar-thumb {
+  background: #00ff88;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #00cc6a;
+}

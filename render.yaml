@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: shuctf-backend
+    runtime: python
+    plan: free
+    buildCommand: "pip install -r server/requirements.txt"
+    startCommand: "python server/app.py --prod"
+    envVars:
+      - key: RENDER
+        value: "true"
+      - key: DEEPSEEK_API_KEY
+        sync: false
