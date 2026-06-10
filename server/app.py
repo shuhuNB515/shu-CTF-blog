@@ -11,6 +11,7 @@ from urllib.parse import unquote
 
 app = Flask(__name__)
 CORS(app)
+application = app  # PythonAnywhere WSGI 入口
 
 DB_PATH = os.path.join(os.path.dirname(__file__), 'data.db')
 
