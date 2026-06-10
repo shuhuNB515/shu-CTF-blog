@@ -18,7 +18,7 @@ html, body {
 #app {
   min-height: 100vh;
   position: relative;
-  background: #ffffff url('/doro背景.png') repeat-y center top;
+  background: #ffffff;
 }
  
 

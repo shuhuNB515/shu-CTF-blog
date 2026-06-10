@@ -59,7 +59,7 @@ export default {
   name: 'App',
   data() {
     return {
-      bgImage: '/doro背景.png',
+      bgImage: import.meta.env.BASE_URL + 'doro背景.png',
       cursorX: -100,
       cursorY: -100,
       isLoggedIn: false,

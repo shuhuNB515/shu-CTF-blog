@@ -34,6 +34,16 @@ def add_cors_headers(response):
     return response
 
 
+@app.before_request
+def handle_options():
+    if request.method == 'OPTIONS':
+        resp = app.make_default_options_response()
+        resp.headers['Access-Control-Allow-Origin'] = '*'
+        resp.headers['Access-Control-Allow-Headers'] = 'Content-Type,Authorization'
+        resp.headers['Access-Control-Allow-Methods'] = 'GET,POST,PUT,DELETE,OPTIONS'
+        return resp
+
+
 def decode_body(raw_body):
     """解码前端混淆后的请求体（Base64 → URLDecode → JSON）"""
     try:
