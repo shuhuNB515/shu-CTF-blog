@@ -1,6 +1,6 @@
 # shu-CTF Blog
 
-上海大学 CTF 战队博客，记录 Writeup、分享安全知识。
+shu CTF 战队博客，记录 Writeup、分享安全知识。
 
 ![首页](public/doro背景.png)
 
