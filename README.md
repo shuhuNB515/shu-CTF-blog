@@ -2,6 +2,10 @@
 
 上海大学 CTF 战队博客，记录 Writeup、分享安全知识。
 
+![首页](public/doro背景.png)
+
+![吉祥物](public/doro1.png) ![吉祥物](public/doro2.png) ![吉祥物](public/doro3.png) ![吉祥物](public/doro4.png)
+
 ## 技术栈
 
 - **前端**: Vue 3 + Vue Router + Vite
