@@ -35,7 +35,7 @@ pip install -r requirements.txt
 python app.py
 ```
 
-默认账号: `shuhu` / `Hu200692?`
+
 
 ## 部署
 
