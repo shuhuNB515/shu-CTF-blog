@@ -15,8 +15,10 @@ application = app  # PythonAnywhere WSGI 入口
 
 DB_PATH = os.path.join(os.path.dirname(__file__), 'data.db')
 
-# DeepSeek API 配置
-DEEPSEEK_API_KEY = os.environ.get('DEEPSEEK_API_KEY', 'sk-c515700cfdae4a96894fde97c55c3ace')
+# DeepSeek API 配置（从环境变量读取，不再硬编码）
+DEEPSEEK_API_KEY = os.environ.get('DEEPSEEK_API_KEY', '')
+if not DEEPSEEK_API_KEY:
+    print('[WARNING] DEEPSEEK_API_KEY 环境变量未设置，Agent 功能将不可用')
 DEEPSEEK_API_URL = 'https://api.deepseek.com/chat/completions'
 
 
@@ -123,7 +125,10 @@ def init_db():
 def login():
     data = decode_body(request.data)
     username = data.get('username', '')
-    password_hash = data.get('password', '')  # 客户端已做SHA256，直接比对
+    password = data.get('password', '')  # 接收明文密码
+
+    # 服务端 SHA-256 哈希后再比对
+    password_hash = hashlib.sha256(password.encode('utf-8')).hexdigest()
 
     conn = get_db()
     user = conn.execute('SELECT id, username FROM users WHERE username=? AND password=?',
