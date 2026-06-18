@@ -7,28 +7,17 @@ export default defineConfig({
   build: {
     sourcemap: false,
     cssMinify: 'esbuild',
-    minify: 'terser',
-    terserOptions: {
-      compress: {
-        drop_console: true,
-        drop_debugger: true,
-        passes: 3,
-      },
-      mangle: {
-        toplevel: true,
-        safari10: true,
-      },
-      output: {
-        beautify: false,
-        comments: false,
-      },
-    },
+    minify: 'esbuild',
     rollupOptions: {
       output: {
         assetFileNames: 'assets/[name]-[hash][extname]',
         chunkFileNames: 'assets/[name]-[hash].js',
         entryFileNames: 'assets/[name]-[hash].js',
+        manualChunks: {
+          'vue-vendor': ['vue', 'vue-router'],
+        },
       },
     },
+    chunkSizeWarningLimit: 600,
   },
 })
