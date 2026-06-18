@@ -2,25 +2,45 @@
 
 shu CTF 战队博客，记录 Writeup、分享安全知识。
 
-![首页](public/doro背景.png)
+<div align="center">
+  <img src="public/doro背景.png" alt="首页背景" width="600">
+</div>
 
-![吉祥物](public/doro1.png) ![吉祥物](public/doro2.png) ![吉祥物](public/doro3.png) ![吉祥物](public/doro4.png)
+## 吉祥物
+
+<div align="center">
+  <img src="public/doro1.png" width="120">
+  <img src="public/doro2.png" width="120">
+  <img src="public/doro3.png" width="120">
+  <img src="public/doro4.png" width="120">
+</div>
+
+## 功能预览
+
+<div align="center">
+  <img src="public/maodie.gif" alt="耄耋" width="200">
+  <img src="public/耄耋2.gif" alt="耄耋2" width="200">
+  <img src="public/耄耋3.gif" alt="耄耋3" width="200">
+  <img src="public/耄耋4.gif" alt="耄耋4" width="200">
+</div>
 
 ## 技术栈
 
-- **前端**: Vue 3 + Vue Router + Vite
-- **后端**: Python Flask
-- **数据库**: SQLite
-- **AI**: DeepSeek API（Agent 对话）
-- **部署**: GitHub Pages（前端）+ PythonAnywhere（后端）
+| 层级 | 技术 |
+|------|------|
+| 前端 | Vue 3 + Vue Router + Vite |
+| 后端 | Python Flask |
+| 数据库 | SQLite |
+| AI | DeepSeek API（Agent 对话）|
+| 部署 | GitHub Pages + PythonAnywhere |
 
 ## 功能
 
-- Writeup 文章展示与分类浏览
-- 用户登录认证
-- AI Agent 对话（CTF 题目解答助手）
-- Writeup 编辑与管理
-- 浏览量统计
+- **Writeup 展示** — 文章分类浏览，支持 Web / 逆向 / Misc / 密码学 / PWN 等分类
+- **用户登录** — 密码 SHA-256 加密，请求体 Base64 混淆
+- **AI Agent** — 基于 DeepSeek 的 CTF 题目解答助手
+- **文章管理** — 编辑、新增、删除 Writeup
+- **浏览统计** — 页面访问量记录与可视化
 
 ## 本地开发
 
@@ -38,8 +58,6 @@ cd server
 pip install -r requirements.txt
 python app.py
 ```
-
-
 
 ## 部署
 
