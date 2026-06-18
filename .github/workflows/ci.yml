@@ -1,0 +1,64 @@
+name: CI - Build & Lint
+
+on:
+  pull_request:
+    branches: [main, master]
+  push:
+    branches: [main, master]
+
+jobs:
+  frontend:
+    name: Frontend Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build
+        run: npx vite build
+
+      - name: Check Build Output
+        run: |
+          if [ ! -d "dist" ]; then
+            echo "Build failed: dist/ not found"
+            exit 1
+          fi
+          echo "Build succeeded! Output files:"
+          ls -la dist/
+
+  backend:
+    name: Backend Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Dependencies
+        run: |
+          cd server
+          pip install -r requirements.txt
+
+      - name: Syntax Check
+        run: |
+          cd server
+          python -m py_compile app.py
+          echo "Python syntax check passed!"
+
+      - name: Import Check
+        run: |
+          cd server
+          python -c "from app import app; print('Flask app imported successfully')"
+        env:
+          DEEPSEEK_API_KEY: test-key-for-ci
