@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import { apiPost, sha256 } from '../utils/api.js'
+import { apiPost } from '../utils/api.js'
 
 export default {
   name: 'LoginView',
@@ -48,11 +48,10 @@ export default {
       }
       this.loading = true
       try {
-        // 密码客户端SHA256哈希后再发送，Network面板看不到明文密码
-        const pwHash = await sha256(this.password)
+        // 密码由服务端做SHA-256哈希，前端只负责Base64混淆
         const data = await apiPost('/api/login', {
           username: this.username,
-          password: pwHash,
+          password: this.password,
         })
         if (data.success) {
           this.successMsg = '登录成功！欢迎回来，' + data.user.username
@@ -63,7 +62,7 @@ export default {
           this.errorMsg = data.message
         }
       } catch (e) {
-        this.errorMsg = '无法连接到服务器，请确认后端已启动'
+        this.errorMsg = '连接失败: ' + (e.message || '网络错误')
       }
       this.loading = false
     },

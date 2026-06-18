@@ -13,6 +13,10 @@ export async function apiPost(path, data) {
     headers: { 'Content-Type': 'text/plain' },
     body: obfuscateBody(data),
   })
+  if (!res.ok) {
+    const txt = await res.text()
+    throw new Error(`HTTP ${res.status}: ${txt}`)
+  }
   return res.json()
 }
 
@@ -36,12 +40,4 @@ export async function apiPut(path, data) {
 export async function apiDel(path) {
   const res = await fetch(API_BASE + path, { method: 'DELETE' })
   return res.json()
-}
-
-// SHA-256 哈希（客户端密码加密）
-export async function sha256(message) {
-  const msgBuffer = new TextEncoder().encode(message)
-  const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer)
-  const hashArray = Array.from(new Uint8Array(hashBuffer))
-  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('')
 }
