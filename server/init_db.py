@@ -16,24 +16,22 @@ def init_db():
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )
     ''')
-    
-    # 检查是否已有 shuhu 账号
-    cursor.execute("SELECT id FROM users WHERE username = ?", ('shuhu',))
+    cursor.execute("SELECT id FROM users WHERE username = ?", ('',))
     existing = cursor.fetchone()
     
     if not existing:
-        password_hash = bcrypt.hashpw('Hu200692?'.encode('utf-8'), bcrypt.gensalt())
+        password_hash = bcrypt.hashpw(''.encode('utf-8'), bcrypt.gensalt())
         cursor.execute(
             "INSERT INTO users (username, password_hash) VALUES (?, ?)",
             ('shuhu', password_hash.decode('utf-8'))
         )
-        print("用户 shuhu 创建成功!")
+        print("")
     else:
-        print("用户 shuhu 已存在，跳过创建。")
+        print("")
     
     conn.commit()
     conn.close()
-    print("数据库初始化完成! (ctf_blog.db)")
+    print("")
 
 if __name__ == '__main__':
     init_db()
