@@ -16,7 +16,7 @@ application = app  # PythonAnywhere WSGI 入口
 DB_PATH = os.path.join(os.path.dirname(__file__), 'data.db')
 
 # DeepSeek API 配置
-DEEPSEEK_API_KEY = os.environ.get('DEEPSEEK_API_KEY', 'sk-c515700cfdae4a96894fde97c55c3ace')
+DEEPSEEK_API_KEY = os.environ.get('DEEPSEEK_API_KEY',)
 DEEPSEEK_API_URL = 'https://api.deepseek.com/chat/completions'
 
 
