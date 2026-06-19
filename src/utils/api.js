@@ -1,5 +1,5 @@
 // 后端API地址 — 部署到 PythonAnywhere 后在此修改
-export const API_BASE = 'https://shuhunb515.pythonanywhere.com'
+export const API_BASE = ''
 
 // 请求体混淆：Base64(URLEncode(JSON))
 function obfuscateBody(data) {
