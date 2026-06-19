@@ -16,7 +16,7 @@ application = app  # PythonAnywhere WSGI 入口
 DB_PATH = os.path.join(os.path.dirname(__file__), 'data.db')
 
 # DeepSeek API 配置
-DEEPSEEK_API_KEY = os.environ.get('DEEPSEEK_API_KEY', 'sk-c515700cfdae4a96894fde97c55c3ace')
+DEEPSEEK_API_KEY = os.environ.get('DEEPSEEK_API_KEY', '')
 DEEPSEEK_API_URL = 'https://api.deepseek.com/chat/completions'
 
 
@@ -349,8 +349,8 @@ if __name__ == '__main__':
     # Render.com 设置 RENDER=true，自动用 waitress
     if '--prod' in sys.argv or os.environ.get('RENDER'):
         from waitress import serve
-        print(f'>>> 生产模式启动 (waitress) http://0.0.0.0:{port}')
+        print(f':{port}')
         serve(app, host='0.0.0.0', port=port)
     else:
-        print(f'>>> 开发模式启动 (flask dev) http://127.0.0.1:{port}')
+        print(f':{port}')
         app.run(port=port, debug=True)
